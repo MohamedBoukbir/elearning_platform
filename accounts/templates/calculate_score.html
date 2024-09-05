@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Calculate Score</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="hours_studied">Hours Studied:</label>
+            <input type="number" id="hours_studied" name="hours_studied" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="previous_scores">Previous Scores:</label>
+            <input type="number" id="previous_scores" name="previous_scores" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="extracurricular">Extracurricular Activities:</label>
+            <select id="extracurricular" name="extracurricular" class="form-control" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="sleep_hours">Sleep Hours:</label>
+            <input type="number" id="sleep_hours" name="sleep_hours" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="sample_papers">Sample Question Papers Practiced:</label>
+            <input type="number" id="sample_papers" name="sample_papers" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+</div>
+{% endblock %}
