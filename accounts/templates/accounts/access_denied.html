@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès refusé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            color: red;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Accès refusé</h1>
+    <p>Vous n'avez pas les permissions nécessaires pour accéder à cette page.</p>
+    <a href="{% url redirect_url %}">Retour au tableau de bord</a>
+</body>
+</html>

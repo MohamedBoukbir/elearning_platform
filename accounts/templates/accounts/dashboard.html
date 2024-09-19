@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
@@ -14,11 +14,33 @@
             <a href="{% url 'logout' %}">Logout</a>
         </nav>
     </header>
+
     <div class="container">
         <h1>Welcome to the Dashboard!</h1>
-        <!-- Button to reset the questionnaire -->
-        <a href="{% url 'calculate_score' %}" class="btn btn-primary mt-4">Redo Questionnaire</a>
+        
+        {% if show_questionnaire_button %}
+            <a href="{% url 'calculate_score' %}" class="btn btn-primary">Take the Questionnaire</a>
+        {% endif %}
+
+        <!-- Formulaire pour poser une question -->
+        <h2>Posez une question éducative :</h2>
+        <form method="POST" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="question" class="sr-only">Posez une question :</label>
+                <input type="text" class="form-control" name="question" id="question" placeholder="Entrez votre question" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Obtenir une réponse</button>
+        </form>
+
+        <!-- Affichage de la réponse générée -->
+        {% if response %}
+            <div class="alert alert-info mt-3">
+                <strong>Réponse :</strong> {{ response }}
+            </div>
+        {% endif %}
     </div>
+
     <footer>
         &copy; 2024 E-Learning Platform
     </footer>
